@@ -1,5 +1,5 @@
-// Package functions no edit file
-package functions
+// Package function no edit file
+package gcf
 
 import (
 	"context"
@@ -7,7 +7,7 @@ import (
 	"os"
 
 	"cloud.google.com/go/pubsub"
-	"github.com/gcp-kit/line-bot-boilerplate-go/cmd"
+	"github.com/gcp-kit/line-bot-boilerplate-go/core"
 	"github.com/line/line-bot-sdk-go/linebot"
 )
 
@@ -24,8 +24,8 @@ const (
 var (
 	secret       string
 	entryPoint   string
-	op           *cmd.Operation
-	tracer       *cmd.Tracer
+	op           *core.Operation
+	tracer       *core.Tracer
 	pubSubClient *pubsub.Client
 	parentTopic  *pubsub.Topic
 	childTopic   *pubsub.Topic
@@ -35,7 +35,7 @@ var (
 // Probably no edit
 func setting(parentTopicName, childTopicName string) {
 	ctx := context.Background()
-	tracer = new(cmd.Tracer)
+	tracer = new(core.Tracer)
 
 	var err error
 	pubSubClient, err = pubsub.NewClient(ctx, projectID)
@@ -43,7 +43,7 @@ func setting(parentTopicName, childTopicName string) {
 		log.Fatal(err)
 	}
 
-	secret = os.Getenv(cmd.EnvKeyChannelSecret)
+	secret = os.Getenv(core.EnvKeyChannelSecret)
 	switch entryPoint {
 	case RouteWebHook:
 		parentTopic = pubSubClient.Topic(parentTopicName)
@@ -52,14 +52,14 @@ func setting(parentTopicName, childTopicName string) {
 	case RouteChildFunctions:
 		setFunction()
 
-		token := os.Getenv(cmd.EnvKeyChannelAccessToken)
+		token := os.Getenv(core.EnvKeyChannelAccessToken)
 
 		client, err := linebot.New(secret, token)
 		if err != nil {
 			log.Fatal(err)
 		}
 
-		op = &cmd.Operation{
+		op = &core.Operation{
 			Client: client,
 			Tracer: tracer,
 		}

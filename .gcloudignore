@@ -11,6 +11,18 @@
 # Output of the go coverage tool, specifically when used with LiteIDE
 *.out
 
-env/.env.yaml
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# IntelliJ project files
+.idea
+out
+gen
 .DS_Store
-.idea/
+env/.env.yaml.tmpl
+# main.go
+README.md
+.gcloudignore
+.gitignore
+.github
+.git

@@ -1,4 +1,4 @@
-package functions
+package gcf
 
 // nolint
 import (
@@ -9,7 +9,8 @@ import (
 	"os"
 
 	"cloud.google.com/go/pubsub"
-	"github.com/gcp-kit/line-bot-boilerplate-go/cmd"
+	"github.com/gcp-kit/line-bot-boilerplate-go-example/function"
+	"github.com/gcp-kit/line-bot-boilerplate-go/core"
 	"github.com/gcp-kit/line-bot-boilerplate-go/util"
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -27,14 +28,14 @@ func init() {
 	}
 }
 
-// setFunction add a functions to use in `ChildFunctions`
+// setFunction add a function to use in `ChildFunctions`
 // editing required
 func setFunction() {
-	tracer.Function = map[cmd.TracerName]func(context.Context, *cmd.Operation, *linebot.Event) *cmd.TracerResp{
-		cmd.TracerFollowEvent:     FollowEvent,
-		cmd.TracerUnfollowEvent:   UnfollowEvent,
-		cmd.TracerTextMessage:     TextEvent,
-		cmd.TracerLocationMessage: LocationEvent,
+	tracer.Function = map[core.TracerName]func(context.Context, *core.Operation, *linebot.Event) *core.TracerResp{
+		core.TracerFollowEvent:     function.FollowEvent,
+		core.TracerUnfollowEvent:   function.UnfollowEvent,
+		core.TracerTextMessage:     function.TextEvent,
+		core.TracerLocationMessage: function.LocationEvent,
 	}
 	/*
 	** the processing to put in the Global variable is here
@@ -47,7 +48,7 @@ func setFunction() {
 // nolint
 func WebHook(w http.ResponseWriter, r *http.Request) {
 	ctx := util.SetGinContext(w, r)
-	cmd.WebHook(ctx, secret, parentTopic)
+	core.WebHook(ctx, secret, parentTopic)
 }
 
 // ParentFunctions CloudFunctions(Trigger: Pub/Sub)
@@ -57,11 +58,11 @@ func Forking(ctx context.Context, m *pubsub.Message) error {
 	log.Println("EntryPoint:", entryPoint)
 	switch entryPoint {
 	case RouteParentFunctions:
-		return cmd.ParentFunctions(ctx, m, tracer, childTopic)
+		return core.ParentFunctions(ctx, m, tracer, childTopic)
 	case RouteChildFunctions:
-		return cmd.ChildFunctions(ctx, m, op)
+		return core.ChildFunctions(ctx, m, op)
 	default:
-		return fmt.Errorf("invalid functions name")
+		return fmt.Errorf("invalid function name")
 	}
 }
 
@@ -70,7 +71,7 @@ func Forking(ctx context.Context, m *pubsub.Message) error {
 // nolint
 func LiffFull(w http.ResponseWriter, r *http.Request) {
 	ctx := util.SetGinContext(w, r)
-	Liff(ctx)
+	function.Liff(ctx)
 }
 
 // LiffTall CloudFunctions(Trigger: HTTP)
@@ -78,7 +79,7 @@ func LiffFull(w http.ResponseWriter, r *http.Request) {
 // nolint
 func LiffTall(w http.ResponseWriter, r *http.Request) {
 	ctx := util.SetGinContext(w, r)
-	Liff(ctx)
+	function.Liff(ctx)
 }
 
 // LiffCompact CloudFunctions(Trigger: HTTP)
@@ -86,5 +87,5 @@ func LiffTall(w http.ResponseWriter, r *http.Request) {
 // nolint
 func LiffCompact(w http.ResponseWriter, r *http.Request) {
 	ctx := util.SetGinContext(w, r)
-	Liff(ctx)
+	function.Liff(ctx)
 }

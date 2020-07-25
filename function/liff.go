@@ -1,4 +1,4 @@
-package functions
+package function
 
 import (
 	"fmt"
@@ -11,7 +11,6 @@ import (
 
 // Liff Line Front end Framework(v2.1)
 func Liff(ctx *gin.Context) {
-	fmt.Println(1)
 	H := gin.H{"Title": "LiffCompactTest"}
 	latLon := ctx.Request.Form.Get("latLon")
 	if len(latLon) > 0 {
@@ -33,6 +32,5 @@ func Liff(ctx *gin.Context) {
 	if len(err) > 0 {
 		H["Error"] = err
 	}
-	fmt.Println(H)
 	ctx.HTML(http.StatusOK, "liff.tmpl", H)
 }

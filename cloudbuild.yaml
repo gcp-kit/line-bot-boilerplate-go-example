@@ -9,7 +9,7 @@ steps:
       - '--runtime=go111'
       - '--timeout=30'
       - '--trigger-http'
-      - '--env-vars-file=.env.yaml'
+      - '--env-vars-file=env/.env.yaml'
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -21,7 +21,7 @@ steps:
       - '--runtime=go111'
       - '--timeout=30'
       - '--trigger-topic=parent-test'
-      - '--env-vars-file=.env.yaml'
+      - '--env-vars-file=env/.env.yaml'
 
   - name: 'gcr.io/cloud-builders/gcloud'
     args:
@@ -34,7 +34,7 @@ steps:
       - '--runtime=go111'
       - '--timeout=30'
       - '--trigger-topic=child-test'
-      - '--env-vars-file=.env.yaml'
+      - '--env-vars-file=env/.env.yaml'
       - '--memory=512MB' # 処理によって可変
 
   - name: 'gcr.io/cloud-builders/gcloud'
@@ -47,4 +47,4 @@ steps:
       - '--runtime=go111'
       - '--timeout=30'
       - '--trigger-http'
-      - '--env-vars-file=.env.yaml'
+      - '--env-vars-file=env/.env.yaml'
