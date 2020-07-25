@@ -11,8 +11,8 @@ go get
 `.env.yaml.tpl` を `.env.yaml` にしてyaml内の値を整える  
 
 ## Local
-
 ```shell script
+cd cmd
 go run main.go
 ```
 
@@ -20,7 +20,6 @@ go run main.go
 Cloud Pub/SubのTopicを作っておく(2つ)  
 ### Deploy
 ```shell script
-cd functions
 gcloud builds submit --config=cloudbuild.yaml .
 ```
 
