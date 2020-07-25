@@ -60,7 +60,7 @@ func Forking(ctx context.Context, m *pubsub.Message) error {
 	case RouteParentFunctions:
 		return core.ParentFunctions(ctx, m, tracer, childTopic)
 	case RouteChildFunctions:
-		return core.ChildFunctions(ctx, m, op)
+		return core.ChildFunctions(ctx, m, operation)
 	default:
 		return fmt.Errorf("invalid function name")
 	}

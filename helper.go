@@ -24,7 +24,7 @@ const (
 var (
 	secret       string
 	entryPoint   string
-	op           *core.Operation
+	operation    *core.Operation
 	tracer       *core.Tracer
 	pubSubClient *pubsub.Client
 	parentTopic  *pubsub.Topic
@@ -59,7 +59,7 @@ func setting(parentTopicName, childTopicName string) {
 			log.Fatal(err)
 		}
 
-		op = &core.Operation{
+		operation = &core.Operation{
 			Client: client,
 			Tracer: tracer,
 		}
