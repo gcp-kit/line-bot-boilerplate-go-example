@@ -58,7 +58,7 @@ func Forking(ctx context.Context, m *pubsub.Message) error {
 	log.Println("EntryPoint:", entryPoint)
 	switch entryPoint {
 	case RouteParentFunctions:
-		return core.ParentFunctions(ctx, m, tracer, childTopic)
+		return core.ParentFunctions(ctx, m, childTopic)
 	case RouteChildFunctions:
 		return core.ChildFunctions(ctx, m, operation)
 	default:
