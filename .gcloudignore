@@ -15,14 +15,14 @@
 # vendor/
 
 # IntelliJ project files
-.idea
-out
-gen
 .DS_Store
-env/.env.yaml.tmpl
-# main.go
-README.md
 .gcloudignore
-.gitignore
-.github
 .git
+.github
+.gitignore
+.idea
+cmd/
+env/.env.yaml.tmpl
+gen
+out
+README.md
