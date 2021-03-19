@@ -10,6 +10,7 @@ import (
 
 	"cloud.google.com/go/pubsub"
 	"github.com/gcp-kit/line-bot-boilerplate-go-example/function"
+	"github.com/gcp-kit/line-bot-boilerplate-go-example/pkg/utils"
 	"github.com/gcp-kit/line-bot-boilerplate-go/core"
 	"github.com/gcp-kit/line-bot-boilerplate-go/util"
 	"github.com/line/line-bot-sdk-go/linebot"
@@ -22,7 +23,7 @@ var (
 
 // nolint
 func init() {
-	if projectID != "" {
+	if utils.GetProjectID() != "" {
 		entryPoint = os.Getenv("FUNCTION_NAME")
 		setting("parent-test", "child-test")
 	}
