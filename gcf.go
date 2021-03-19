@@ -17,9 +17,7 @@ import (
 )
 
 // example
-var (
-	count int
-)
+var count int
 
 // nolint
 func init() {
