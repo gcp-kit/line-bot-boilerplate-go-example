@@ -52,6 +52,8 @@ github.com/gcp-kit/line-bot-boilerplate-go v0.0.0-20200725082430-a049dea145b0 h1
 github.com/gcp-kit/line-bot-boilerplate-go v0.0.0-20200725082430-a049dea145b0/go.mod h1:ZpOzb3wyrymIHf0S4bO80y1llV009fuqAN1mWRE8vWg=
 github.com/gcp-kit/line-bot-boilerplate-go v0.0.0-20200725104528-8944d2740bf1 h1:ZyMkJYZFDn6TnsoaOTqWfchVBOcvdg9v5Gkgz7DVcsg=
 github.com/gcp-kit/line-bot-boilerplate-go v0.0.0-20200725104528-8944d2740bf1/go.mod h1:ZpOzb3wyrymIHf0S4bO80y1llV009fuqAN1mWRE8vWg=
+github.com/gcp-kit/line-bot-boilerplate-go v0.0.0-20200921135858-6acd2991c961 h1:7geDN1NaK22MKSSmcJnvFUCSgZEBU7P+K9EZUrWfrbE=
+github.com/gcp-kit/line-bot-boilerplate-go v0.0.0-20200921135858-6acd2991c961/go.mod h1:ZpOzb3wyrymIHf0S4bO80y1llV009fuqAN1mWRE8vWg=
 github.com/gin-contrib/sse v0.1.0 h1:Y/yl/+YNO8GZSjAhjMsSuLt29uWRFHdHYUb5lYOV9qE=
 github.com/gin-contrib/sse v0.1.0/go.mod h1:RHrZQHXnP2xjPF+u1gW/2HnVO7nvIa9PG3Gm+fLHvGI=
 github.com/gin-gonic/gin v1.6.3 h1:ahKqKTFpO5KTPHxWZjEdPScmYaGtLo8Y4DMHoEsnp14=
