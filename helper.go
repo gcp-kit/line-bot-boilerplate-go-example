@@ -7,6 +7,7 @@ import (
 	"os"
 
 	"cloud.google.com/go/pubsub"
+	"github.com/gcp-kit/line-bot-boilerplate-go-example/pkg/utils"
 	"github.com/gcp-kit/line-bot-boilerplate-go/core"
 	"github.com/line/line-bot-sdk-go/linebot"
 )
@@ -29,7 +30,6 @@ var (
 	pubSubClient *pubsub.Client
 	parentTopic  *pubsub.Topic
 	childTopic   *pubsub.Topic
-	projectID    = os.Getenv("GCP_PROJECT")
 )
 
 // Probably no edit
@@ -38,7 +38,7 @@ func setting(parentTopicName, childTopicName string) {
 	tracer = new(core.Tracer)
 
 	var err error
-	pubSubClient, err = pubsub.NewClient(ctx, projectID)
+	pubSubClient, err = pubsub.NewClient(ctx, utils.GetProjectID())
 	if err != nil {
 		log.Fatal(err)
 	}
