@@ -3,7 +3,6 @@ package utils
 import (
 	"os"
 
-	"github.com/gcp-kit/line-bot-boilerplate-go-example/pkg/constant"
 	"github.com/gcp-kit/stalog"
 )
 
@@ -21,7 +20,6 @@ func NewStalogConfig(severities ...stalog.Severity) *stalog.Config {
 	config.AdditionalData = stalog.AdditionalData{ // set additional fields for all logs
 		"service": GetServiceName(),
 		"version": GetServiceVersion(),
-		"build":   constant.CommitHash,
 	}
 	return config
 }
