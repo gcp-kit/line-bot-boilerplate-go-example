@@ -4,5 +4,5 @@ steps:
       - 'app'
       - 'deploy'
       - '--project=$PROJECT_ID'
-      - 'deploy/appengine/bot.yaml'
+      - 'deploy/appengine/app.yaml'
       - 'deploy/appengine/dispatch.yaml'
